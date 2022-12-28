@@ -10,7 +10,7 @@ npm i redux
 
 ## Action
 
-`type`만이 필수 프로퍼티이며, 문자열이다.
+`type`만이 필수 프로퍼티이며, `type`는문자열이다.
 
 - {type: 'TEST'} : payload없는 액션
 - {type: 'TEST', params: 'hello'} : payload있는 액션
@@ -22,12 +22,13 @@ npm i redux
 ```js
 function 액션생성자() {
   return action;
+  //return {type: " ", params: " "}
 }
 ```
 
-1. 액션 생성자를 통해 액션을 만들어내며 만들어낸 액션 객체를 디럭스 스토어에 보낸다.
+1. 액션 생성자를 통해 액션을 만들어내며 만들어낸 액션 객체를 리덕스 스토어에 보낸다.
 2. 리덕스 스토어가 액션 객체를 받으면 스토어의 상태 값이 변경된다.
-3. 변경된 상태 갑셍 의해 상태를 이용하고 있는 컴포넌트가 변경된다.
+3. 변경된 상태 값에 의해 상태를 이용하고 있는 컴포넌트가 변경된다.
 4. 액션은 스토어에 보내는 일종의 인풋이다.
 
 ## Reducers
@@ -35,7 +36,7 @@ function 액션생성자() {
 액션을 주면, 액션이 적용되어 달라진 결과를 만들어주는 순수함수.
 
 ```js
-function 리듀서(previousState, action) {
+function reducer함수이름(previousState, action) {
   return newState;
 }
 ```
