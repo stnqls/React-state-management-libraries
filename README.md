@@ -45,21 +45,25 @@ function reducer함수이름(previousState, action) {
 
 ## createStore
 
+: 스토어를 만드는 함수
+
 ```js
 const store = createStore(리듀서);
 
-//스토어를 만드는 함수
 createStore<S>(
   reducer: Reducer<S>,
-  preloadedState: S,
+  preloadedState: S, //초기값
   enhancer?:StoreEnhancer<S>
 ):Store<S>
 ```
 
 - `store.getState()` : 현재 상태를 가져온다.
 - `store.dispatch(액션)`, `store.dispatch(액션생성자())` : store의 상태를 변경시킨다.
-- `const unsubscribe = store.subscribe(()=>{})`
+- `const unsubscribe = store.subscribe(()=>{})` : store에 변경이 생겼을때 함수가 실행 된다.
+
   - 리턴이 unsubscribe이다.
+  - unsubscribe();하면 제거된다.
+
 - `store.replaceReducer(다른 리듀서)`
 
 ## combineReducers
