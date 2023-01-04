@@ -91,6 +91,49 @@ const reducer = combineReducers({
 <!-- ## 비동기작업
 - `액션`을 분리하고, `dispatch`를 할때 사용한다. -->
 
+## 리덕스 미들웨어
+
+미들웨어가 `dispatch`의 앞뒤에 코드를 추가할 수 있게 해준다.
+미들웨어가 여러개일경우 순차적으로 실행된다.
+
+```jsx
+function middleware1(store) {
+  console.log("middleware1", 0);
+  return (next) => {
+    console.log("middleware1", 1);
+    return (action) => {
+      console.log("middleware1", 2);
+      const returnValue = next(action);
+      console.log("middleware1", 3);
+      return returnValue;
+    };
+  };
+}
+
+function middleware2(store) {
+  console.log("middleware2", 0);
+  return (next) => {
+    console.log("middleware2", 1);
+    return (action) => {
+      console.log("middleware2", 2);
+      const returnValue = next(action);
+      console.log("middleware2", 3);
+      return returnValue;
+    };
+  };
+}
+```
+
+`middleware1 0` ➡ `middleware2 0` ➡ `middleware2 1` ➡ `middleware1 1` ➡ `middleware1 2` ➡ `middleware2 2` ➡ `middleware2 3` ➡ `middleware1 3` 의 순서로 진행된다.
+
+### redux-thunk
+
+: 리덕스 미들웨어로, 리덕스에서 비동기 처리를 위한 라이브러리이다. 액션 생성자가 함수를 리턴한다.
+
+### redux-promise-middleware
+
+type의 이름이 `PENDING`, `FULFILLED`, `REJECTED`의 이름으로 나타난다.
+
 <!-- 단일 스토어 사용 준비하기
 
 - import redux

@@ -1,8 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UserList from "../components/UserList";
-import { getUsersFail, getUsersStart, getUsersSuccess } from "../redux/actions";
-import axios from "axios";
+import { getUsersPromise, getUsersThunk } from "../redux/actions";
 
 export default function UserListContainer() {
   const users = useSelector((state) => state.users.data);
@@ -26,14 +25,22 @@ export default function UserListContainer() {
   //   [dispatch]
   // );
 
-  const getUsers = useCallback(async () => {
-    try {
-      dispatch(getUsersStart());
-      const res = await axios.get("https://api.github.com/users");
-      dispatch(getUsersSuccess(res.data));
-    } catch (err) {
-      dispatch(getUsersFail(err));
-    }
+  // const getUsers = useCallback(async () => {
+  //   try {
+  //     dispatch(getUsersStart());
+  //     const res = await axios.get("https://api.github.com/users");
+  //     dispatch(getUsersSuccess(res.data));
+  //   } catch (err) {
+  //     dispatch(getUsersFail(err));
+  //   }
+  // }, [dispatch]);
+
+  // const getUsers = useCallback(() => {
+  //   dispatch(getUsersThunk());
+  // }, [dispatch]);
+
+  const getUsers = useCallback(() => {
+    dispatch(getUsersPromise());
   }, [dispatch]);
 
   return <UserList users={users} getUsers={getUsers} />;
