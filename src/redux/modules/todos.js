@@ -1,8 +1,26 @@
-import { ADD_TODO, COMPLETE_TODO } from "../actions";
+const ADD_TODO = "redux-start/todos/ADD_TODO";
+const COMPLETE_TODO = "redux-start/todos/COMPLETE_TODO";
 
+//액션 생성함수
+export function addTodo(text) {
+  return {
+    type: ADD_TODO,
+    text,
+  };
+}
+
+export function completeTodo(index) {
+  return {
+    type: COMPLETE_TODO,
+    index,
+  };
+}
+
+//초기값
 const initialState = [];
 
-export default function todos(previousState = initialState, action) {
+//리듀서
+export default function reducer(previousState = initialState, action) {
   if (action.type === ADD_TODO) {
     return [...previousState, { text: action.text, done: false }];
   }
