@@ -87,7 +87,6 @@ const reducer = combineReducers({
 - `Privider컴포넌트`를 제공해준다.
 - `connect함수` 를통해 컨테이너를 만들어준다.
   - 컨테이너 : 스토어의 `state`와 `dispatch`를 연결한 컴포넌트에 `props`로 넣어주는 역할을 한다.
--
 
 <!-- 단일 스토어 사용 준비하기
 
