@@ -1,30 +1,14 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import { addTodo } from "./redux/actions";
-import store from "./redux/store";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
-function App({ store }) {
-  const [state, setState] = useState(store.getState());
-
-  useEffect(() => {
-    const unsubscribe = store.subscribe(() => {
-      setState(store.getState());
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, [store]);
-
+function App() {
   return (
     <div className="App">
-      {JSON.stringify(state)}
-      <button onClick={click}>추가</button>
+      <TodoList />
+      <TodoForm />
     </div>
   );
-}
-
-function click() {
-  store.dispatch(addTodo("HTML"));
 }
 
 export default App;
