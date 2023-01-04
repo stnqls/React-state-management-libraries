@@ -88,6 +88,9 @@ const reducer = combineReducers({
 - `connect함수` 를통해 컨테이너를 만들어준다.
   - 컨테이너 : 스토어의 `state`와 `dispatch`를 연결한 컴포넌트에 `props`로 넣어주는 역할을 한다.
 
+<!-- ## 비동기작업
+- `액션`을 분리하고, `dispatch`를 할때 사용한다. -->
+
 <!-- 단일 스토어 사용 준비하기
 
 - import redux
