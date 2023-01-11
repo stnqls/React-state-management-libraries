@@ -6,17 +6,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TestMocking from "./components/TestMocking";
 
 import "./App.css";
+import Counter from "./features/counter/Counter";
+import Counte2 from "./components/Counter2";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* <Route path="/" exact element={<Home />} />
-        <Route path="/todos" exact element={<Todos />} />
-        <Route path="/users" exact element={<Users />} /> */}
-        <Route path="/" exact element={<TestMocking />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Counter />
+      <Counte2 />
+    </>
   );
 }
 

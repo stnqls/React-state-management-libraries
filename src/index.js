@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import store from "./redux/store";
+// import store from "./redux/store";
+import store2 from "./app/store";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV === "development") {
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store2}>
       <App />
     </Provider>
   </React.StrictMode>
